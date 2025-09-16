@@ -10,26 +10,35 @@ def home():
 <ul>
     <li><a href="/user/john">User Profile: john</a></li>
     <li><a href="/user/alice">User Profile: alice</a></li>
-    <li><a href=""></a></li>
-    <li><a href=""></a></li>
-    <li><a href=""></a></li>
-    <li><a href=""></a></li>
-    <li><a href=""></a></li>
 </ul>
 '''
 
-@app.route('/user/username', methods=[''])
+@app.route('/user/username>')
 def user_profile(username):
-    return '''
-<h1>User Profile</h1>
-<p>Usrname: <strong>{username}.__name__</strong></p>
-<p>Welcome to {usernanme}</p>
+    return f'''
+    <h1>User Profile</h1>
+<p>Username: <strong>{username}.__name__</strong></p>
+<p>Welcome to {username}'s profile page!</p>
 <nav>
     <a href="/">Back to homepage</a>
-    <a href="/alice">Alice</a>
-    <a href="bob">Bob</a>
+    <a href="/user/alice">Alice</a>
+    <a href="/user/bob">Bob</a>
 </nav>
 '''
+
+@app.route("/calc/<int:num1>/<operation>/<int:num2>")
+def calculator(num1, operation, num2):
+    operations = {
+        '+': num1+num2,
+        '-': num1+-num2,
+        '*': num1+num2,
+        '/': num1+num2 if num2!=0 else 'Error: Division by zero!'
+    }
+    if operation in operations:
+        result = operations[operation]
+        return f"{num1} {operation} {num2} = {result}"
+    else:
+        return f"Unknown operation! {operation}"
 
 if __name__ == '__main__':
     app.run(debug=True)
