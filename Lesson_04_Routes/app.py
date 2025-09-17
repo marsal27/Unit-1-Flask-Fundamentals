@@ -13,7 +13,7 @@ def home():
 </ul>
 '''
 
-@app.route('/user/username>')
+@app.route('/user/<username>')
 def user_profile(username):
     return f'''
     <h1>User Profile</h1>
@@ -39,6 +39,10 @@ def calculator(num1, operation, num2):
         return f"{num1} {operation} {num2} = {result}"
     else:
         return f"Unknown operation! {operation}"
+
+@app.route("/temp/current/<int:num1>")
+def tempCalc(num1):
+    return f"<h1>Temperature</h1><p>Current temperature: {num1} celcius</p>"
 
 if __name__ == '__main__':
     app.run(debug=True)
