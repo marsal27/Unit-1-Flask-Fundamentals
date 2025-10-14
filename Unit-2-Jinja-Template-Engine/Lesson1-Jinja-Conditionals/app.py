@@ -4,17 +4,17 @@ app = Flask(__name__)
 
 @app.route('/<username>')
 def hello(username):
-    if username=='admin':
-        role='admin'
-        age=30
+    if username == 'admin':
+        role = 'admin'
+        age = 30
     else:
-        role='user'
-        age=16
-    
+        role = 'user'
+        age = 16
+        
     user_data = {
-        'name':username,
+        'name': username,
         'role': role,
-        'age': age
+        'age' : age
     }
     return render_template("welcome.html", user=user_data)
 

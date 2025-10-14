@@ -9,10 +9,10 @@
 </head>
 <body>
     <h1>Welcome {{user.name}}!</h1>
-    {%if user.role=='admin' %}
-    <p class="badge badge.admin">
-        🌟ADMIN ACCESS
-    </p>
+    {% if user.role == 'admin' %}
+        <p class="badge badge.admin">
+            🌟ADMIN ACCESS
+        </p>  
     {% endif %}
 </body>
 </html>
